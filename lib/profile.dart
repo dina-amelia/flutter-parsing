@@ -14,6 +14,7 @@ class _ProfileState extends State<Profile> {
   late String _usergithub = "";
   late String _repogithub = "";
   List _hobi = [];
+  List<Article> _articles = [];
 
   Future _loadSampleJson() async {
     String jsonString = await rootBundle.loadString("assets/sample.json");
@@ -26,6 +27,7 @@ class _ProfileState extends State<Profile> {
       _usergithub = sample.github!.username.toString();
       _repogithub = sample.github!.repository.toString();
       _hobi = sample.hobi!.toList();
+      _articles = sample.articles!.toList();
     });
   }
 
@@ -128,6 +130,38 @@ class _ProfileState extends State<Profile> {
                           child: Center(
                               child: Text(
                             _hobi[index].toString(),
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          )),
+                        ),
+                      ),
+                    );
+                  }),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
+              height: MediaQuery.of(context).size.height * 0.30,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: _articles.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      width: MediaQuery.of(context).size.width * 0.7,
+                      child: Card(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(colors: [
+                              Colors.green.shade300,
+                              Colors.green.shade400
+                            ]),
+                          ),
+                          child: Center(
+                              child: Text(
+                            _articles[index].id.toString() +
+                                "." +
+                                "\n" +
+                                _articles[index].title +
+                                "\n" +
+                                _articles[index].subtitle,
                             style: TextStyle(color: Colors.white, fontSize: 20),
                           )),
                         ),
