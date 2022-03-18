@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       title: "Parsing",
       home: Scaffold(
           appBar: AppBar(
-            title: Text("Flutter"),
+            title: Text("Parsing Ujikom"),
             backgroundColor: Colors.blueAccent,
           ),
           body: Profile()),
